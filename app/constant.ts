@@ -4,6 +4,8 @@ export const REPO_URL = `https://github.com/${OWNER}/${REPO}`;
 export const COFFEE_URL = `https://www.buymeacoffee.com/xianyun`;
 export const ISSUE_URL = `https://github.com/${OWNER}/${REPO}/issues`;
 export const SITE_URL = `https://chat.googlegemini.co/`;
+export const MUSIC_URL = `https://aimusic.one`;
+export const TOOL_URL = `https://bai.tools`;
 export const UPDATE_URL = `${REPO_URL}#keep-updated`;
 export const RELEASE_URL = `${REPO_URL}/releases`;
 export const FETCH_COMMIT_URL = `https://api.github.com/repos/${OWNER}/${REPO}/commits?per_page=1`;

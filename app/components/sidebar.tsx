@@ -12,7 +12,8 @@ import DeleteIcon from "../icons/delete.svg";
 import MaskIcon from "../icons/mask.svg";
 import PluginIcon from "../icons/plugin.svg";
 import DragIcon from "../icons/drag.svg";
-import CoffeeIcon from "../icons/coffee.svg";
+import ToolsIcon from "../icons/tools.svg";
+import MusicIcon from "../icons/music.svg";
 
 import Locale from "../locales";
 
@@ -27,6 +28,8 @@ import {
   REPO_URL,
   COFFEE_URL,
   SITE_URL,
+  MUSIC_URL,
+  TOOL_URL,
 } from "../constant";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -234,13 +237,17 @@ export function SideBar(props: { className?: string }) {
             </a>
           </div>
           <div className={styles["sidebar-action"]}>
+            <a href={MUSIC_URL} target="_blank" title="AI Music Generator">
+              <IconButton icon={<MusicIcon />} shadow />
+            </a>
+          </div>
+          <div className={styles["sidebar-action"]}>
             <a
-              href={COFFEE_URL}
+              href={TOOL_URL}
               target="_blank"
-              rel="noopener noreferrer"
-              title="Buy Me a Coffee"
+              title="Best AI Tools Directory - bai.tools"
             >
-              <IconButton icon={<CoffeeIcon />} shadow />
+              <IconButton icon={<ToolsIcon />} shadow />
             </a>
           </div>
         </div>
