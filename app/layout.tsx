@@ -40,6 +40,11 @@ export default function RootLayout({
         <meta name="config" content={JSON.stringify(getClientConfig())} />
         <link rel="manifest" href="/site.webmanifest"></link>
         <script src="/serviceWorkerRegister.js" defer></script>
+        <script
+          defer
+          data-domain="chatgg.co"
+          src="https://sdxl.me/js/script.js"
+        ></script>
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5839223319872967"
@@ -48,7 +53,7 @@ export default function RootLayout({
         />
         <Script
           strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-MRZ81287ZX`}
+          src={`https://www.googletagmanager.com/gtag/js?id=G-PVNQF22E1L`}
         />
         <Script
           id="gtag-init"
@@ -61,7 +66,7 @@ export default function RootLayout({
           }
           gtag('js', new Date());
           
-          gtag('config', 'G-MRZ81287ZX');
+          gtag('config', 'G-PVNQF22E1L');
           page_path: window.location.pathname;
         `,
           }}
