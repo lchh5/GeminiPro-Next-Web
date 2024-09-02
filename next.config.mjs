@@ -1,4 +1,6 @@
 import webpack from "webpack";
+import fs from 'fs';
+import path from 'path';
 
 const mode = process.env.BUILD_MODE ?? "standalone";
 console.log("[Next] build mode", mode);
@@ -33,6 +35,47 @@ const nextConfig = {
   experimental: {
     forceSwcTransforms: true,
   },
+  async headers() {
+    if (mode !== "export") {
+      return [
+        {
+          source: "/api/:path*",
+          headers: CorsHeaders,
+        },
+      ];
+    }
+    return [];
+  },
+  async rewrites() {
+    if (mode !== "export") {
+      return {
+        beforeFiles: [
+          {
+            source: "/api/proxy/:path*",
+            destination: "https://api.openai.com/:path*",
+          },
+          {
+            source: "/google-fonts/:path*",
+            destination: "https://fonts.googleapis.com/:path*",
+          },
+          {
+            source: "/sharegpt",
+            destination: "https://sharegpt.com/api/conversations",
+          },
+        ],
+      };
+    }
+    return [];
+  },
+  async redirects() {
+    return [
+      {
+        source: '/ads.txt',
+        destination: '/public/ads.txt',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 const CorsHeaders = [
@@ -51,37 +94,5 @@ const CorsHeaders = [
     value: "86400",
   },
 ];
-
-if (mode !== "export") {
-  nextConfig.headers = async () => {
-    return [
-      {
-        source: "/api/:path*",
-        headers: CorsHeaders,
-      },
-    ];
-  };
-
-  nextConfig.rewrites = async () => {
-    const ret = [
-      {
-        source: "/api/proxy/:path*",
-        destination: "https://api.openai.com/:path*",
-      },
-      {
-        source: "/google-fonts/:path*",
-        destination: "https://fonts.googleapis.com/:path*",
-      },
-      {
-        source: "/sharegpt",
-        destination: "https://sharegpt.com/api/conversations",
-      },
-    ];
-
-    return {
-      beforeFiles: ret,
-    };
-  };
-}
 
 export default nextConfig;
