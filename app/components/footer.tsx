@@ -10,6 +10,7 @@ const footerLinks: FooterLink[] = [
   // { href: '/privacy-policy', label: '隐私策略' },
   // { href: '/terms-of-service', label: '服务条款' },
   { href: "https://aifaceswap.ai", label: "AIFaceSwap.ai" },
+  { href: "https://fluximagegenerator.co", label: "Flux Image Generator" },
 ];
 
 export function Footer() {
