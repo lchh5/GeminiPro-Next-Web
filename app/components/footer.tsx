@@ -6,9 +6,9 @@ interface FooterLink {
 }
 
 const footerLinks: FooterLink[] = [
-  // { href: '/blog', label: 'Blog' },
-  // { href: '/privacy-policy', label: '隐私策略' },
-  // { href: '/terms-of-service', label: '服务条款' },
+  { href: "/blog", label: "Blog" },
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/tos", label: "Terms Of Service" },
   { href: "https://aifaceswap.ai", label: "AIFaceSwap.ai" },
   { href: "https://fluximagegenerator.co", label: "Flux Image Generator" },
 ];
@@ -25,6 +25,7 @@ export function Footer() {
             <a
               key={link.href}
               href={link.href}
+              target="_blank"
               className="text-sm hover:underline"
               style={{
                 marginRight: index < footerLinks.length - 1 ? "16px" : "0",
