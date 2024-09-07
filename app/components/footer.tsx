@@ -11,6 +11,7 @@ const footerLinks: FooterLink[] = [
   { href: "/tos", label: "Terms Of Service" },
   { href: "https://aifaceswap.ai", label: "AIFaceSwap.ai" },
   { href: "https://fluximagegenerator.co", label: "Flux Image Generator" },
+  { href: "https://www.dcmburner.com", label: "Dcm Burner" },
 ];
 
 export function Footer() {
