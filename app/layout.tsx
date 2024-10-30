@@ -7,6 +7,7 @@ import { type Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getServerSideConfig } from "./config/server";
 import Script from "next/script";
+import { Footer } from "./components/footer";
 
 const serverConfig = getServerSideConfig();
 
@@ -72,13 +73,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
-        {children}
-        {serverConfig?.isVercel && (
-          <>
-            <SpeedInsights />
-          </>
-        )}
+      <body className="min-h-screen overflow-x-hidden">
+        <div className="flex flex-col min-h-screen">
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
