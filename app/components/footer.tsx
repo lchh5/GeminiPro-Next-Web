@@ -14,7 +14,12 @@ const footerLinks: FooterLink[] = [
   { href: "https://fluximagegenerator.co", label: "Flux Image Generator" },
   { href: "https://www.dcmburner.com", label: "Dcm Burner" },
   { href: "https://ctread.com", label: "CT Read" },
+  { href: "https://unblockedgames.now/", label: "Unblocked Games" },
   { href: "https://worldguessr.co/", label: "WorldGuessr Game" },
+  {
+    href: "https://escaperoadunblocked.co/",
+    label: "Escape Road Unblocked Game",
+  },
 ];
 
 export function Footer() {
