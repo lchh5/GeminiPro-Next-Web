@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   geminipro-next-web:
     profiles: [ "no-proxy" ]
