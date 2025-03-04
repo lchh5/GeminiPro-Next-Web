@@ -1,4 +1,3 @@
-version: "3"
 services:
   geminipro-next-web:
     profiles: [ "no-proxy" ]
@@ -16,19 +15,3 @@ services:
       - DISABLE_FAST_LINK=$DISABLE_FAST_LINK
       - OPENAI_SB=$OPENAI_SB
 
-  geminipro-next-web-proxy:
-    profiles: [ "proxy" ]
-    container_name: geminipro-next-web-proxy
-    image: lchh5/geminipro-next-web
-    ports:
-      - 3000:3000
-    environment:
-      - GOOGLE_API_KEY=$GOOGLE_API_KEY
-      - PROXY_URL=$PROXY_URL
-      - GOOGLE_URL=$GOOGLE_URL
-      - OPENAI_ORG_ID=$OPENAI_ORG_ID
-      - HIDE_USER_API_KEY=$HIDE_USER_API_KEY
-      - DISABLE_GPT4=$DISABLE_GPT4
-      - ENABLE_BALANCE_QUERY=$ENABLE_BALANCE_QUERY
-      - DISABLE_FAST_LINK=$DISABLE_FAST_LINK
-      - OPENAI_SB=$OPENAI_SB
