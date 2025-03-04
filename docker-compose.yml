@@ -1,38 +1,34 @@
-version: "3"
-
+version: "3.9"
 services:
-  next-app:
+  geminipro-next-web:
+    profiles: [ "no-proxy" ]
     container_name: geminipro-next-web
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        ENV_VARIABLE: ${ENV_VARIABLE}
-        NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+    image: lchh5/geminipro-next-web
+    ports:
+      - 3000:3000
     environment:
       - GOOGLE_API_KEY=$GOOGLE_API_KEY
       - GOOGLE_URL=$GOOGLE_URL
-      - NODE_ENV=production
-    restart: always
+      - OPENAI_ORG_ID=$OPENAI_ORG_ID
+      - HIDE_USER_API_KEY=$HIDE_USER_API_KEY
+      - DISABLE_GPT4=$DISABLE_GPT4
+      - ENABLE_BALANCE_QUERY=$ENABLE_BALANCE_QUERY
+      - DISABLE_FAST_LINK=$DISABLE_FAST_LINK
+      - OPENAI_SB=$OPENAI_SB
+
+  geminipro-next-web-proxy:
+    profiles: [ "proxy" ]
+    container_name: geminipro-next-web-proxy
+    image: lchh5/geminipro-next-web
     ports:
-      - 3000
-    networks:
-      - dokploy-network
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.my-nextjs-app-http.rule=Host(`chatgg.co`)"
-      - "traefik.http.routers.my-nextjs-app-http.entrypoints=web"
-      - "traefik.http.routers.my-nextjs-app-http.middlewares=https-redirect"
-      - "traefik.http.routers.my-nextjs-app.rule=Host(`chatgg.co`)"
-      - "traefik.http.routers.my-nextjs-app.entrypoints=websecure"
-      - "traefik.http.routers.my-nextjs-app.tls.certResolver=letsencrypt"
-      - "traefik.http.services.my-nextjs-app.loadbalancer.server.port=3000"
-      - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.https-redirect.redirectscheme.permanent=true"
-    deploy:
-      resources:
-        limits:
-          memory: 256M
-networks:
-  dokploy-network:
-    external: true
+      - 3000:3000
+    environment:
+      - GOOGLE_API_KEY=$GOOGLE_API_KEY
+      - PROXY_URL=$PROXY_URL
+      - GOOGLE_URL=$GOOGLE_URL
+      - OPENAI_ORG_ID=$OPENAI_ORG_ID
+      - HIDE_USER_API_KEY=$HIDE_USER_API_KEY
+      - DISABLE_GPT4=$DISABLE_GPT4
+      - ENABLE_BALANCE_QUERY=$ENABLE_BALANCE_QUERY
+      - DISABLE_FAST_LINK=$DISABLE_FAST_LINK
+      - OPENAI_SB=$OPENAI_SB
